@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs")%>
+<section class="hero">
+  <div class="container1">
+      <h2>Welcome to My Blog</h2>
+      <p>Insights, stories, and tips on web development, programming, and more.</p>
+  </div>
+</section>
+
+  <h3 id="lposts">Latest Posts</h3>
+  <div class="content-area">
+    <% posts.forEach(function(i) { %>
+      <div class="post">
+        <div class="heading">
+          <h5 id="title"><%=i.title%></h5>
+            <h6 id="user"><%=i.user_id%></h6>
+            <%//buttons%>
+        </div>
+            
+        <div class="text">
+            <p id="text"><%=i.tarea%></p>
+         </div>
+         <div class="buttons">
+          <form action="/edit" method="post">
+            <button class="btn btn1 btn-outline-primary" name="edit" value="<%= i.id %>" id="<%= i.id %>">Edit</button>
+          </form>
+          <form action="/delete" method="post">
+            <button class="btn btn1 btn-outline-danger" name="delete" value="<%= i.id %>" id="<%= i.id %>">Delete</button>
+            </form>
+        </div>
+      </div>
+    <% });%>
+  </div>
+  
+  
+
+
+<%- include("partials/footer.ejs")%>
